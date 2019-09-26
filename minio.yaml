@@ -1,0 +1,24 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1alpha1
+kind: Addon
+metadata:
+  name: minio
+  namespace: kubeaddons
+  labels:
+    kubeaddons.mesosphere.io/name: minio
+  annotations:
+    values.chart.helm.kubeaddons.mesosphere.io/minio: "https://raw.githubusercontent.com/helm/charts/39524419882dcf3d1a053711ac242c280923a094/stable/minio/values.yaml"
+spec:
+  namespace: minio
+  kubernetes:
+    minSupportedVersion: v1.15.3
+  cloudProvider:
+    - name: aws
+      enabled: true
+    - name: none
+      enabled: true
+    - name: docker
+      enabled: true
+  chartReference:
+    chart: stable/minio
+    version: 2.15.5
