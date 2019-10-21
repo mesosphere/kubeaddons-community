@@ -1,0 +1,24 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1alpha1
+kind: Addon
+metadata:
+  name: minio
+  namespace: kubeaddons
+  labels:
+    kubeaddons.mesosphere.io/name: minio
+  annotations:
+    # minio does not follow semver so we use the chart version for revision instead
+    catalog.kubeaddons.mesosphere.io/addon-revision: "2.5.1-1"
+spec:
+  kubernetes:
+    minSupportedVersion: v1.15.3
+  cloudProvider:
+    - name: aws
+      enabled: true
+    - name: none
+      enabled: true
+    - name: docker
+      enabled: true
+  chartReference:
+    chart: stable/minio
+    version: 2.5.1

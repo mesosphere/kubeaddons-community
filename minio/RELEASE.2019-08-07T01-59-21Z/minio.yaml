@@ -7,9 +7,9 @@ metadata:
   labels:
     kubeaddons.mesosphere.io/name: minio
   annotations:
-    values.chart.helm.kubeaddons.mesosphere.io/minio: "https://raw.githubusercontent.com/helm/charts/39524419882dcf3d1a053711ac242c280923a094/stable/minio/values.yaml"
+    # minio does not follow semver so we use the chart version for revision instead
+    catalog.kubeaddons.mesosphere.io/addon-revision: "2.5.15-1"
 spec:
-  namespace: minio
   kubernetes:
     minSupportedVersion: v1.15.3
   cloudProvider:
@@ -21,4 +21,4 @@ spec:
       enabled: true
   chartReference:
     chart: stable/minio
-    version: 2.15.5
+    version: 2.5.15
