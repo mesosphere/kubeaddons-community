@@ -1,0 +1,27 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1beta1
+kind: ClusterAddon
+metadata:
+  name: local-path-provisioner
+  labels:
+    kubeaddons.mesosphere.io/name: local-path-provisioner
+  annotations:
+    catalog.kubeaddons.mesosphere.io/addon-revision: "0.0.12-1"
+    appversion.kubeaddons.mesosphere.io/local-path-provisioner: "0.0.12"
+spec:
+  namespace: local-path
+  kubernetes:
+    minSupportedVersion: v1.16.6
+  cloudProvider:
+    - name: aws
+      enabled: false
+    - name: azure
+      enabled: false
+    - name: docker
+      enabled: false
+    - name: none
+      enabled: false
+  chartReference:
+    chart: local-path-provisioner
+    repo: https://mesosphere.github.io/charts/staging
+    version: 0.0.12
